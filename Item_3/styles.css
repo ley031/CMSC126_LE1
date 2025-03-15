@@ -1,0 +1,207 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    width: 100%;
+    background: #d32f2f;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.container {
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.ingredients {
+    background: white;
+    padding: 20px;
+    margin-right: 20px;
+    width: 700px;
+    height: fit-content;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.image-description {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.image-description img {
+    width: 300px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.description {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: justify;
+    width: 100%;
+}
+
+.time-servings, .carousel {
+    background: white;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+
+/* Steps Navigation */
+.carousel {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+/* Hide all steps by default */
+.step {
+    display: none;
+    text-align: center;
+}
+
+/* Show active step using :target */
+.step:target {
+    display: block;
+}
+
+/* Navigation Buttons */
+.control-button {
+    position: absolute;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 24px;
+    color: #d32f2f;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s;
+}
+
+.control-button:hover {
+    background-color: #f0f0f0;
+}
+
+/* Position left and right buttons */
+.control-button.left {
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.control-button.right {
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Restart Button */
+.control-button.restart {
+    right: 10px;
+    top: 10px;
+}
+
+/* Accessibility */
+a:focus {
+    outline: 2px dashed #d32f2f;
+    border-radius: 4px;
+}/* Steps Navigation */
+.carousel {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+/* Hide all steps by default */
+.step {
+    display: none;
+    text-align: center;
+}
+
+/* Show active step using :target */
+.step:target {
+    display: block;
+}
+
+/* Navigation Buttons */
+.control-button {
+    position: absolute;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 24px;
+    color: #d32f2f;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s;
+}
+
+.control-button:hover {
+    background-color: #f0f0f0;
+}
+
+/* Position left and right buttons */
+.control-button.left {
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.control-button.right {
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Restart Button */
+.control-button.restart {
+    right: 10px;
+    top: 10px;
+}
+
+/* Accessibility */
+a:focus {
+    outline: 2px dashed #d32f2f;
+    border-radius: 4px;
+}

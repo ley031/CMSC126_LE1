@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pork Sinigang - Interactive Guide</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Pork Sinigang</h1>
+    </header>
+
+    <div class="container">
+        <aside class="ingredients">
+            <h2>Ingredients</h2>
+            <ul>
+                <li>1 tbsp vegetable oil</li>
+                <li>1 small onion, chopped</li>
+                <li>1 tsp salt</li>
+                <li>1/2 inch fresh ginger, chopped</li>
+                <li>2 plum tomatoes, diced</li>
+                <li>1 lb bone-in pork chops</li>
+                <li>4 cups water</li>
+                <li>1.41 oz tamarind soup base</li>
+                <li>1/2 lb fresh green beans</li>
+            </ul>
+        </aside>
+
+        <div class="content">
+            <div class="image-description">
+                <img src="sinigang.webp" alt="A bowl of Pork Sinigang">
+                <div class="description">
+                    <p>Pork Sinigang is a classic Filipino comfort food known for its savory and tangy flavor profile. This hearty soup is made with tender pork, fresh vegetables, and a tamarind-based broth that gives it a distinctive sourness.</p>
+                </div>
+            </div>
+
+            <div class="time-servings">
+                <p><strong>Prep Time:</strong> 15 mins | <strong>Cook Time:</strong> 1 hr | <strong>Total Time:</strong> 1 hr 15 mins | <strong>Servings:</strong> 4</p>
+            </div>
+
+            <main class="carousel">
+                <!-- Restart Button (Always Visible) -->
+                <a href="#step1" class="control-button restart" aria-label="Restart">&#x21bb;</a>
+        
+                <!-- Steps -->
+                <section id="step1" class="step active">
+                    <a href="#step4" class="control-button left" aria-label="Previous Step">&#9665;</a>
+                    <h2>Step 1: Sauté Onion</h2>
+                    <img src="step1.webp" alt="Sautéing onions in a pan">
+                    <p>Heat oil in a skillet over medium heat. Add chopped onion and cook until softened.</p>
+                    <a href="#step2" class="control-button right" aria-label="Next Step">&#9655;</a>
+                </section>
+        
+                <section id="step2" class="step">
+                    <a href="#step1" class="control-button left" aria-label="Previous Step">&#9665;</a>
+                    <h2>Step 2: Add Ingredients</h2>
+                    <img src="step2.webp" alt="Adding pork and other ingredients to the pot">
+                    <p>Stir in ginger, tomatoes, and pork chops. Cover and reduce heat, cooking until pork is browned.</p>
+                    <a href="#step3" class="control-button right" aria-label="Next Step">&#9655;</a>
+                </section>
+        
+                <section id="step3" class="step">
+                    <a href="#step2" class="control-button left" aria-label="Previous Step">&#9665;</a>
+                    <h2>Step 3: Simmer</h2>
+                    <img src="step3.webp" alt="Sinigang simmering in the pot">
+                    <p>Pour in water and tamarind soup base. Bring to a boil, then simmer for 30 minutes.</p>
+                    <a href="#step4" class="control-button right" aria-label="Next Step">&#9655;</a>
+                </section>
+        
+                <section id="step4" class="step">
+                    <a href="#step3" class="control-button left" aria-label="Previous Step">&#9665;</a>
+                    <h2>Step 4: Add Green Beans & Serve</h2>
+                    <img src="step4.webp" alt="Adding green beans to the soup">
+                    <p>Stir in green beans and cook until tender. Serve hot with rice and enjoy!</p>
+                    <a href="#step1" class="control-button right" aria-label="Restart to Step 1">&#9655;</a>
+                </section>
+            </main>
+        </div>
+    </div>
+</body>
+</html>
