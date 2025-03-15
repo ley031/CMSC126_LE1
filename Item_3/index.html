@@ -3,17 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pork Sinigang - Interactive Guide</title>
+    <title>Pork Sinigang - Interactive Recipe</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Skip link for keyboard users -->
+    <a href="#recipe-steps" class="skip-link">Skip to recipe</a>
+    
     <header>
         <h1>Pork Sinigang</h1>
     </header>
 
     <div class="container">
-        <aside class="ingredients">
-            <h2>Ingredients</h2>
+        <aside class="ingredients" aria-labelledby="ingredients-heading">
+            <h2 id="ingredients-heading">Ingredients</h2>
             <ul>
                 <li>1 tbsp vegetable oil</li>
                 <li>1 small onion, chopped</li>
@@ -29,54 +35,133 @@
 
         <div class="content">
             <div class="image-description">
-                <img src="sinigang.webp" alt="A bowl of Pork Sinigang">
+                <img src="sinigang.webp" alt="A bowl of Pork Sinigang soup with tender pork pieces and vegetables in a clear broth">
                 <div class="description">
-                    <p>Pork Sinigang is a classic Filipino comfort food known for its savory and tangy flavor profile. This hearty soup is made with tender pork, fresh vegetables, and a tamarind-based broth that gives it a distinctive sourness.</p>
+                    <p>Pork Sinigang is a classic Filipino comfort food known for its savory and tangy flavor profile. This hearty soup features tender pork simmered with fresh vegetables in a tamarind-based broth that gives it a distinctive sour taste. It's the perfect dish for rainy days or whenever you crave something warm and comforting with a unique flavor profile.</p>
                 </div>
             </div>
 
-            <div class="time-servings">
-                <p><strong>Prep Time:</strong> 15 mins | <strong>Cook Time:</strong> 1 hr | <strong>Total Time:</strong> 1 hr 15 mins | <strong>Servings:</strong> 4</p>
+            <div class="time-servings" role="region" aria-label="Recipe time and servings information">
+                <p>
+                    <span><strong>Prep Time:</strong> 15 mins</span>
+                    <span><strong>Cook Time:</strong> 1 hr</span>
+                    <span><strong>Total Time:</strong> 1 hr 15 mins</span>
+                    <span><strong>Servings:</strong> 4</span>
+                </p>
             </div>
 
-            <main class="carousel">
-                <!-- Restart Button (Always Visible) -->
-                <a href="#step1" class="control-button restart" aria-label="Restart">&#x21bb;</a>
-        
-                <!-- Steps -->
-                <section id="step1" class="step active">
-                    <a href="#step4" class="control-button left" aria-label="Previous Step">&#9665;</a>
-                    <h2>Step 1: Sauté Onion</h2>
-                    <img src="step1.webp" alt="Sautéing onions in a pan">
-                    <p>Heat oil in a skillet over medium heat. Add chopped onion and cook until softened.</p>
-                    <a href="#step2" class="control-button right" aria-label="Next Step">&#9655;</a>
-                </section>
-        
-                <section id="step2" class="step">
-                    <a href="#step1" class="control-button left" aria-label="Previous Step">&#9665;</a>
-                    <h2>Step 2: Add Ingredients</h2>
-                    <img src="step2.webp" alt="Adding pork and other ingredients to the pot">
-                    <p>Stir in ginger, tomatoes, and pork chops. Cover and reduce heat, cooking until pork is browned.</p>
-                    <a href="#step3" class="control-button right" aria-label="Next Step">&#9655;</a>
-                </section>
-        
-                <section id="step3" class="step">
-                    <a href="#step2" class="control-button left" aria-label="Previous Step">&#9665;</a>
-                    <h2>Step 3: Simmer</h2>
-                    <img src="step3.webp" alt="Sinigang simmering in the pot">
-                    <p>Pour in water and tamarind soup base. Bring to a boil, then simmer for 30 minutes.</p>
-                    <a href="#step4" class="control-button right" aria-label="Next Step">&#9655;</a>
-                </section>
-        
-                <section id="step4" class="step">
-                    <a href="#step3" class="control-button left" aria-label="Previous Step">&#9665;</a>
-                    <h2>Step 4: Add Green Beans & Serve</h2>
-                    <img src="step4.webp" alt="Adding green beans to the soup">
-                    <p>Stir in green beans and cook until tender. Serve hot with rice and enjoy!</p>
-                    <a href="#step1" class="control-button right" aria-label="Restart to Step 1">&#9655;</a>
-                </section>
-            </main>
+            <div class="carousel-container">
+                <!-- Main carousel wrapper -->
+                <div class="carousel" id="recipe-steps" role="region" aria-roledescription="step by step recipe instructions" aria-label="Pork Sinigang Recipe Instructions">
+                    
+                    
+                    <!-- Restart button -->
+                    <a href="#recipe-steps" class="restart" aria-label="Restart recipe steps">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                            <path d="M3 3v5h5"></path>
+                        </svg>
+                        <span class="sr-only">Restart recipe steps</span>
+                    </a>
+                    
+                    <!-- Step 1 -->
+                    <section id="step1" class="step" tabindex="-1" role="tabpanel" aria-labelledby="step1-heading" aria-live="polite">
+                        <h2 id="step1-heading">Step 1: Sauté Onion</h2>
+                        <img src="step1.webp" alt="Sautéing chopped onions in a large pot with oil until translucent">
+                        <p>Heat oil in a large pot over medium heat. Add the chopped onions and cook until translucent, about 3-4 minutes. This creates a flavorful base for your sinigang broth.</p>
+                        <div class="navigation" role="navigation" aria-label="Recipe navigation">
+                            <a href="#recipe-steps" class="btn prev hidden" tabindex="-1" aria-disabled="true" aria-label="Previous step (not available)">
+                                <span class="arrow-icon left" aria-hidden="true">←</span>
+                                Previous
+                            </a>
+                            <a href="#step2" class="btn next" accesskey="n" aria-label="Go to Step 2: Add Main Ingredients">
+                                Next
+                                <span class="arrow-icon right" aria-hidden="true">→</span>
+                            </a>
+                        </div>
+                    </section>
+                    
+                    <!-- Step 2 -->
+                    <section id="step2" class="step" tabindex="-1" role="tabpanel" aria-labelledby="step2-heading" aria-live="polite">
+                        <h2 id="step2-heading">Step 2: Add Main Ingredients</h2>
+                        <img src="step2.webp" alt="Adding pork, ginger, tomatoes and salt to the pot with sautéed onions">
+                        <p>Stir in the chopped ginger and diced tomatoes. Add the pork chops and season with salt. Cover and cook over medium heat until the pork is lightly browned on all sides, about 5-7 minutes.</p>
+                        <div class="navigation" role="navigation" aria-label="Recipe navigation">
+                            <a href="#step1" class="btn prev" accesskey="p" aria-label="Go back to Step 1: Sauté Onion">
+                                <span class="arrow-icon left" aria-hidden="true">←</span>
+                                Previous
+                            </a>
+                            <a href="#step3" class="btn next" accesskey="n" aria-label="Go to Step 3: Simmer the Broth">
+                                Next
+                                <span class="arrow-icon right" aria-hidden="true">→</span>
+                            </a>
+                        </div>
+                    </section>
+                    
+                    <!-- Step 3 -->
+                    <section id="step3" class="step" tabindex="-1" role="tabpanel" aria-labelledby="step3-heading" aria-live="polite">
+                        <h2 id="step3-heading">Step 3: Simmer the Broth</h2>
+                        <img src="step3.webp" alt="Sinigang simmering in the pot with water and tamarind soup base added">
+                        <p>Pour in 4 cups of water and add the tamarind soup base. Bring the mixture to a boil, then reduce heat to low and simmer for about 30 minutes, or until the pork is tender. This slow cooking process allows the flavors to fully develop.</p>
+                        <div class="navigation" role="navigation" aria-label="Recipe navigation">
+                            <a href="#step2" class="btn prev" accesskey="p" aria-label="Go back to Step 2: Add Main Ingredients">
+                                <span class="arrow-icon left" aria-hidden="true">←</span>
+                                Previous
+                            </a>
+                            <a href="#step4" class="btn next" accesskey="n" aria-label="Go to Step 4: Add Vegetables & Serve">
+                                Next
+                                <span class="arrow-icon right" aria-hidden="true">→</span>
+                            </a>
+                        </div>
+                    </section>
+                    
+                    <!-- Step 4 -->
+                    <section id="step4" class="step" tabindex="-1" role="tabpanel" aria-labelledby="step4-heading" aria-live="polite">
+                        <h2 id="step4-heading">Step 4: Add Vegetables & Serve</h2>
+                        <img src="step4.webp" alt="Adding fresh green beans to the simmering soup, completing the dish">
+                        <p>Add the fresh green beans to the pot and cook for an additional 5-7 minutes until tender but still slightly crisp. Taste and adjust seasoning if needed. Serve hot in bowls with a side of steamed rice and enjoy your delicious homemade Pork Sinigang!</p>
+                        <div class="navigation" role="navigation" aria-label="Recipe navigation">
+                            <a href="#step3" class="btn prev" accesskey="p" aria-label="Go back to Step 3: Simmer the Broth">
+                                <span class="arrow-icon left" aria-hidden="true">←</span>
+                                Previous
+                            </a>
+                            <a href="#recipe-steps" class="btn next hidden" tabindex="-1" aria-disabled="true" aria-label="Next step (not available)">
+                                Next
+                                <span class="arrow-icon right" aria-hidden="true">→</span>
+                            </a>
+                        </div>
+                    </section>
+                    
+                    <!-- Keyboard shortcuts info -->
+                    <div class="keyboard-shortcuts" role="region" aria-label="Keyboard navigation instructions">
+                        <ul>
+                            <li><span class="key">Tab</span> Navigate between elements</li>
+                            <li><span class="key">Enter</span> Activate buttons</li>
+                            <li><span class="key">Alt+N</span> Next step</li>
+                            <li><span class="key">Alt+P</span> Previous step</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    
+    <!-- Hidden text for screen readers -->
+    <div class="sr-only" aria-live="assertive" id="step-announcement"></div>
+
+    <style>
+    /* Additional style for screen reader only elements */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+    </style>
 </body>
 </html>

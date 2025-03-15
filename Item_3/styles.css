@@ -1,207 +1,589 @@
-/* General Styles */
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
+:root {
+    --primary: #ff4757;
+    --primary-dark: #e83a47;
+    --secondary: #2ed573;
+    --dark: #2f3542;
+    --light: #f1f2f6;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    --gradient: linear-gradient(135deg, #ff6b6b, #ff4757);
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --focus-ring: 0 0 0 3px rgba(255, 71, 87, 0.5);
+  }
+  
+  /* Base & Typography */
+  body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.8;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: var(--light);
+    color: var(--dark);
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-header {
+  }
+  
+  h1, h2, h3 {
+    font-weight: 700;
+    line-height: 1.3;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  /* Header */
+  header {
     width: 100%;
-    background: #d32f2f;
+    background: var(--gradient);
     color: white;
     text-align: center;
-    padding: 20px;
-    margin-bottom: 20px;
-}
-
-.container {
+    padding: 2rem 0;
+    margin-bottom: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  
+  header::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background: var(--light);
+    border-radius: 50% 50% 0 0;
+  }
+  
+  header h1 {
+    position: relative;
+    z-index: 1;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Layout */
+  .container {
     display: flex;
     max-width: 1200px;
     width: 100%;
-}
-
-.ingredients {
+    padding: 0 1.5rem;
+    box-sizing: border-box;
+    gap: 2rem;
+  }
+  
+  /* Ingredients Card */
+  .ingredients {
     background: white;
-    padding: 20px;
-    margin-right: 20px;
-    width: 700px;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+    flex: 0 0 300px;
     height: fit-content;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.content {
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .ingredients::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 5px;
+    width: 100%;
+    background: var(--gradient);
+  }
+  
+  .ingredients h2 {
+    position: relative;
+    color: var(--primary);
+    margin-top: 0.5rem;
+  }
+  
+  .ingredients ul {
+    padding-left: 1.2rem;
+    list-style-type: none;
+  }
+  
+  .ingredients li {
+    margin-bottom: 0.7rem;
+    position: relative;
+    padding-left: 1.5rem;
+  }
+  
+  .ingredients li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+    font-size: 1.2rem;
+  }
+  
+  /* Content Area */
+  .content {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-}
-
-.image-description {
+  }
+  
+  /* Main Image & Description */
+  .image-description {
     display: flex;
-    gap: 20px;
-    margin-bottom: 20px;
-}
-
-.image-description img {
-    width: 300px;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    background: white;
+    box-shadow: var(--shadow);
+  }
+  
+  .image-description img {
+    width: 350px;
+    height: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  
+  .description {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .description p {
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+  
+  /* Time & Servings */
+  .time-servings {
+    background: white;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    justify-content: center;
+  }
+  
+  .time-servings p {
+    margin: 0;
+    font-size: 0.95rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    justify-content: center;
+  }
+  
+  .time-servings span {
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  .time-servings strong {
+    color: var(--primary);
+    margin-right: 0.5rem;
+  }
+  
+  /* Carousel Container */
+  .carousel-container {
+    background: white;
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 3rem;
+    overflow: hidden;
+  }
+  
+  .carousel {
+    position: relative;
+  }
+  
+  /* Steps Design */
+  .step {
+    padding: 3rem 2rem;
+    text-align: center;
+    display: none;
+    position: relative;
+  }
+  
+  .step h2 {
+    color: var(--primary);
+    font-size: 1.8rem;
+    margin-top: 0;
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .step h2::after {
+    content: "";
+    position: absolute;
+    left: 10%;
+    bottom: -10px;
+    width: 80%;
+    height: 3px;
+    background: var(--gradient);
+    border-radius: 3px;
+  }
+  
+  .step img {
+    max-width: 100%;
     height: auto;
-    border-radius: 8px;
-}
-
-.description {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: justify;
-    width: 100%;
-}
-
-.time-servings, .carousel {
-    background: white;
-    padding: 10px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-}
-
-
-/* Steps Navigation */
-.carousel {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-}
-
-/* Hide all steps by default */
-.step {
-    display: none;
-    text-align: center;
-}
-
-/* Show active step using :target */
-.step:target {
+    border-radius: 1rem;
+    margin: 0 auto 2rem;
     display: block;
-}
-
-/* Navigation Buttons */
-.control-button {
-    position: absolute;
-    background-color: white;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-    border-radius: 50%;
-    text-decoration: none;
-    font-size: 24px;
-    color: #d32f2f;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    transition: background 0.3s;
-}
-
-.control-button:hover {
-    background-color: #f0f0f0;
-}
-
-/* Position left and right buttons */
-.control-button.left {
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.control-button.right {
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-/* Restart Button */
-.control-button.restart {
-    right: 10px;
-    top: 10px;
-}
-
-/* Accessibility */
-a:focus {
-    outline: 2px dashed #d32f2f;
-    border-radius: 4px;
-}/* Steps Navigation */
-.carousel {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-}
-
-/* Hide all steps by default */
-.step {
-    display: none;
-    text-align: center;
-}
-
-/* Show active step using :target */
-.step:target {
+    max-height: 350px;
+    object-fit: cover;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: var(--transition);
+  }
+  
+  .step img:hover {
+    transform: scale(1.02);
+  }
+  
+  .step p {
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+  }
+  
+  /* Show step1 by default when no hash is present */
+  #recipe-steps:not(:target):not(:has(:target)) #step1 {
     display: block;
-}
-
-/* Navigation Buttons */
-.control-button {
-    position: absolute;
-    background-color: white;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-    border-radius: 50%;
+  }
+  
+  /* Show the targeted step */
+  .step:target {
+    display: block;
+  }
+  
+  /* When the parent carousel is targeted, show step1 */
+  #recipe-steps:target #step1 {
+    display: block;
+  }
+  
+  /* Navigation Controls */
+  .navigation {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 2.5rem;
+  }
+  
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: var(--dark);
+    padding: 0.8rem 1.5rem;
     text-decoration: none;
-    font-size: 24px;
-    color: #d32f2f;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    transition: background 0.3s;
-}
-
-.control-button:hover {
-    background-color: #f0f0f0;
-}
-
-/* Position left and right buttons */
-.control-button.left {
-    left: 10px;
+    font-weight: 600;
+    border-radius: 2rem;
+    border: 2px solid var(--primary);
+    transition: var(--transition);
+    min-width: 120px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background: var(--gradient);
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    z-index: -1;
+  }
+  
+  .btn:hover::before, .btn:focus::before {
+    width: 100%;
+  }
+  
+  .btn:hover, .btn:focus {
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 7px 15px rgba(255, 71, 87, 0.3);
+  }
+  
+  /* Fixed arrow positioning and spacing */
+  .btn.prev, .btn.next {
+    position: relative;
+  }
+  
+  .btn.prev::before {
+    content: '';
+    background: var(--gradient);
+    z-index: -1;
+  }
+  
+  .btn.next::before {
+    content: '';
+    background: var(--gradient);
+    z-index: -1;
+  }
+  
+  .btn.prev {
+    padding-left: 1.8rem;
+  }
+  
+  .btn.next {
+    padding-right: 1.8rem;
+  }
+  
+  /* Arrow icons properly positioned */
+  .btn.prev .arrow-icon {
+    position: absolute;
+    left: 15px;
     top: 50%;
     transform: translateY(-50%);
-}
-
-.control-button.right {
-    right: 10px;
+    transition: var(--transition);
+  }
+  
+  .btn.next .arrow-icon {
+    position: absolute;
+    right: 15px;
     top: 50%;
     transform: translateY(-50%);
-}
+    transition: var(--transition);
+  }
+  
+  .btn:hover .arrow-icon.left, .btn:focus .arrow-icon.left {
+    transform: translate(-4px, -50%);
+  }
+  
+  .btn:hover .arrow-icon.right, .btn:focus .arrow-icon.right {
+    transform: translate(4px, -50%);
+  }
+  
+  .btn.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  /* Restart Button */
+  .restart {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: white;
+    color: var(--primary);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    border: 2px solid transparent;
+    z-index: 10;
+  }
+  
+  .restart svg {
+    width: 24px;
+    height: 24px;
+    transition: var(--transition);
+  }
+  
+  .restart:hover, .restart:focus {
+    background: var(--primary);
+    color: white;
+    transform: rotate(180deg);
+  }
+  
+  .restart:hover svg, .restart:focus svg {
+    transform: scale(1.2);
+  }
+  
+  /* Hide restart on step1 and when no step is targeted */
+  #recipe-steps:not(:target):not(:has(:target)) .restart,
+  #step1:target ~ .restart {
+    display: none;
+  }
+  
 
-/* Restart Button */
-.control-button.restart {
-    right: 10px;
-    top: 10px;
-}
-
-/* Accessibility */
-a:focus {
-    outline: 2px dashed #d32f2f;
+  
+  /* ===== ENHANCED KEYBOARD NAVIGATION ===== */
+  
+  /* Improved focus styles */
+  a:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+  }
+  
+  .btn:focus-visible {
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: var(--focus-ring), 0 7px 15px rgba(255, 71, 87, 0.3);
+  }
+  
+  .btn:focus-visible::before {
+    width: 100%;
+  }
+  
+  .restart:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+    background: var(--primary);
+    color: white;
+  }
+  
+  /* Step focus styles using :focus-within */
+  .step:focus-within {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 71, 87, 0.2);
+    border-radius: 1rem;
+  }
+  
+  /* Skip navigation for keyboard users */
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary);
+    color: white;
+    padding: 8px;
+    z-index: 100;
+    transition: top 0.3s;
+  }
+  
+  .skip-link:focus {
+    top: 0;
+  }
+  
+  /* Keyboard shortcut instructions */
+  .keyboard-shortcuts {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    padding: 1rem;
+    background: rgba(255, 71, 87, 0.08);
+    border-radius: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .keyboard-shortcuts ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    gap: 1.5rem;
+    margin: 0;
+  }
+  
+  .keyboard-shortcuts li {
+    display: flex;
+    align-items: center;
+  }
+  
+  .key {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    height: 24px;
+    background: white;
     border-radius: 4px;
-}
+    margin-right: 8px;
+    padding: 0 5px;
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+  }
+  
+  /* Make keyboard shortcuts visible only when using keyboard navigation */
+  .keyboard-shortcuts {
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+  }
+  
+  body:focus-within .keyboard-shortcuts {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  /* Focus indicator for step switching */
+  .step.focus-visible {
+    animation: pulse 1s ease-in-out;
+  }
+  
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(255, 71, 87, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0); }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 992px) {
+    .container {
+      flex-direction: column;
+    }
+    
+    .ingredients {
+      width: 100%;
+      margin-bottom: 1.5rem;
+    }
+    
+    .image-description {
+      flex-direction: column;
+    }
+    
+    .image-description img {
+      width: 100%;
+      height: 300px;
+    }
+    
+    .keyboard-shortcuts ul {
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    header {
+      padding: 1.5rem 0;
+    }
+    
+    h1 {
+      font-size: 2rem;
+    }
+    
+    .btn {
+      padding: 0.7rem 1.2rem;
+      min-width: 100px;
+    }
+    
+    .navigation {
+      gap: 1.5rem;
+    }
+    
+    .step {
+      padding: 2rem 1.5rem;
+    }
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .step {
+    animation: fadeIn 0.5s ease-out;
+  }
