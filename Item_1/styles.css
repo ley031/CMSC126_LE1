@@ -1,0 +1,146 @@
+/* Import Google Font */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Header Styling */
+header {
+    text-align: center;
+    background-color: #d32f2f; /* Red */
+    color: white;
+    padding: 20px;
+    width: 100%;
+}
+
+/* Main News Container - Centered */
+.news-container {
+    max-width: 800px;
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Flexbox Layout: Newsfeed and Sidebar */
+main {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+}
+
+/* Newsfeed - Takes More Space */
+.newsfeed {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Article Card Styling */
+.news-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* Hover Effect */
+.news-card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+/* News Image */
+.news-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* News Content */
+.news-content {
+    padding: 15px;
+}
+
+/* Headlines Stay Red */
+.news-content h2,
+.sidebar h2 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #d32f2f; /* Red */
+}
+
+/* Date Styling */
+.date {
+    color: #777; /* Muted Gray */
+    font-size: 14px;
+}
+
+/* Links */
+.news-content a {
+    color: #d32f2f; /* Red */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+/* Link Hover Effect */
+.news-content a:hover {
+    color: #b71c1c; /* Darker Red */
+    text-decoration: underline;
+}
+
+/* Sidebar */
+.sidebar {
+    flex: 1;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    height: fit-content;
+}
+
+/* Trending Topics (list items) - Now Gray */
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 10px 0;
+}
+
+/* Make topics under 'Trending Topics' gray */
+.sidebar ul li a {
+    color: #555; /* Gray */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+/* Hover Effect */
+.sidebar ul li a:hover {
+    color: #b71c1c; /* Darker Red */
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .news-container {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .sidebar {
+        order: 2;
+    }
+}
