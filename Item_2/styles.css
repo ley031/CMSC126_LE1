@@ -1,8 +1,13 @@
+/* 
+ * TBH I have used AI to streamline everything, but this is my idea and method.
+ * I mostly modified the style and just used AI as a tool - it did not generate this for me.
+ */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, sans-serif;
 }
 
 html, body {
@@ -11,8 +16,8 @@ html, body {
     padding: 0;
     background-color: #f0f0f0;
     color: #333;
-    font-size: 12px;
-    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    font-family: verdana, arial, helvetica, sans-serif;
 }
 
 a {
@@ -24,13 +29,14 @@ a:hover {
     text-decoration: underline;
 }
 
+/*   HEADER STYLES   */
 header {
     background-color: #cee3f8;
     padding: 0;
     border-bottom: none;
     margin-bottom: 0;
     position: relative;
-    padding-bottom: 12px;
+    padding-bottom: 0px;
 }
 
 .header-container {
@@ -50,7 +56,13 @@ header {
 .logo img {
     height: 30px;
     width: auto;
-    margin-right: 3px;
+    margin-right: 0;
+    margin-left: -15px;
+}
+
+.logo img:first-child {
+    margin-left: 0;
+    margin-right: -5px;
 }
 
 .site-name {
@@ -60,9 +72,10 @@ header {
     color: black;
 }
 
+/* User authentication box in header */
 .user-box {
     background-color: white;
-    padding: 3px 8px;
+    padding: 8px 8px;
     border-left: 1px solid #5f99cf;
     border-right: 1px solid #5f99cf;
     border-top: 1px solid #5f99cf;
@@ -71,67 +84,72 @@ header {
     font-size: 10px;
     position: absolute;
     bottom: -1px;
-    right: 8px;
+    right: 50px;
     z-index: 6;
 }
 
-.username {
+/* since user box overlaps */
+@media screen and (max-width: 768px) {
+    .user-box {
+        position: static;
+        margin: 5px 10px;
+        border-bottom: 1px solid #5f99cf;
+    }
+
+    .header-container {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+.username, .preferences, .logout {
     color: #336699;
     font-weight: bold;
 }
 
-.preferences {
-    color: #336699;
-    font-weight: bold;
-}
-
-.logout {
-    color: #336699;
-}
-
-/* Modified nav-bar to better position tabs */
+/*   NAVIGATION BAR   */
 .nav-bar {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     padding: 0;
     background-color: #f0f0f0;
-    height: 45px; /* Increased height further */
+    height: 45px;
     width: 100%;
     position: relative;
     margin-bottom: 0;
-    z-index: 5; /* Lower z-index so sidebar can overlap */
+    z-index: 5;
     border-bottom: none;
-    margin-top: 0; /* No gap between header and navbar */
+    margin-top: 0;
     border-top: 1px solid #5f99cf;
 }
 
-/* Modified tab-nav to position better with content */
+/* Tab navigation - adjust margin-left to match sidebar width if redesigning */
 .tab-nav {
     display: flex;
     flex-direction: row;
-    height: 25px; /* Reduced height */
-    margin-left: 210px; /* Align with content area, adjusted to match sidebar width */
+    height: 25px;
+    margin-left: 210px;
     padding: 0;
     position: relative;
-    z-index: 6; /* Above content but below sidebar */
+    z-index: 6;
 }
 
 .tab-nav a {
-    padding: 2px 8px; /* Smaller padding */
+    padding: 2px 8px;
     color: #369;
     font-weight: bold;
     border: 1px solid #999;
     border-bottom: none;
-    font-size: 12px; /* Reduced font size */
+    font-size: 12px;
     display: inline-block;
     text-align: center;
-    line-height: 20px; /* Reduced line height */
+    line-height: 20px;
     background-color: white;
     text-decoration: none;
     box-shadow: 0 1px 2px rgba(0,0,0,0.1);
     border-radius: 0;
-    margin-right: 4px; /* Reduced spacing between tabs */
+    margin-right: 4px;
     position: relative;
     top: 1px;
 }
@@ -141,6 +159,7 @@ header {
     font-size: 16px;
 }
 
+/*   SEARCH CONTROLS   */
 .search-box {
     margin-left: auto;
     position: relative;
@@ -166,6 +185,9 @@ header {
     right: 5px;
     top: 3px;
     cursor: pointer;
+    padding-left: 5px;
+    border-left: 1px solid #ccc;
+    height: 16px;
 }
 
 .search-button img {
@@ -173,13 +195,34 @@ header {
     height: 14px;
 }
 
+.search-controls {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    position: relative;
+    z-index: 15;
+    align-self: center;
+    margin-bottom: 12px;
+}
+
+/*   USER INFO   */
 .user-info-meta {
     display: flex;
     align-items: center;
     gap: 5px;
     margin-right: 5px;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
 }
 
+/* Add responsive adjustments for user info meta section */
+@media screen and (max-width: 600px) {
+    .user-info-meta {
+        justify-content: center;
+        margin: 5px 0;
+    }
+}
+
+/* Message indicator styling - customize colors to match theme */
 .msg-indicator {
     display: flex;
     align-items: center;
@@ -188,11 +231,26 @@ header {
     border: 1px solid #ccc;
     border-radius: 3px;
     height: 22px;
+    position: relative;
+    z-index: 7; /* Higher than user-box to prevent overlap */
+}
+
+.msg-indicator img {
+    width: 14px;
+    height: 10px;
+    max-width: 100%;
+    object-fit: contain;
 }
 
 .msg-count {
     margin-left: 3px;
     font-size: 11px;
+    color: #888;
+}
+
+.msg-count strong {
+    color: #000;
+    font-weight: bold;
 }
 
 .link-count, .comment-count {
@@ -204,9 +262,16 @@ header {
     height: 22px;
     display: flex;
     align-items: center;
+    color: #888;
 }
 
-/* Updated main-container to fill entire viewport height */
+.link-count strong, .comment-count strong {
+    color: #000;
+    font-weight: bold;
+}
+
+/*   MAIN LAYOUT   */
+/* Main container with flexible height calculation */
 .main-container {
     display: flex;
     width: 100%;
@@ -215,86 +280,87 @@ header {
     position: relative;
     z-index: 5;
     justify-content: flex-start;
-    min-height: calc(100vh - 90px);
+    min-height: calc(100vh - 90px); /* Adjust based on header/footer height */
     flex: 1;
     height: auto;
 }
 
+/*   SIDEBAR STYLES   */
 .sidebar {
     width: 200px;
     margin-right: 0;
     position: relative;
-    z-index: 20; /* Higher z-index to appear above navbar */
-    margin-top: -25px; /* Adjusted to align better with tab navigation */
-    background-color: #e6effe; /* Lighter blue background color */
+    z-index: 20;
+    margin-top: -25px; /* Negative margin to align with tab navigation */
+    background-color: #EFF7FF;
     margin-left: 0;
-    padding: 0; /* Remove all padding */
-    border-left: 1px solid #000; /* Black left border */
-    border-bottom: 1px solid #000; /* Black bottom border */
-    border-right: 1px solid #000; /* Black right border */
-    border-top: 1px solid #000; /* Black top border */
-    box-sizing: border-box; /* Ensure padding doesn't add to width */
-    min-height: 100vh; /* Make it at least viewport height */
+    padding: 0;
+    border: 1px solid #000;
+    box-sizing: border-box;
+    min-height: 100vh;
 }
 
 .sidebar-section {
-    background-color: #e6effe; /* Lighter blue to match sidebar */
-    border: none; /* Remove all borders by default */
+    background-color: #EFF7FF;
+    border: none;
     margin-bottom: 1px;
-    padding: 3px 0;
+    padding: 3px 15px;
     display: flex;
     align-items: center;
     font-size: 13px;
     font-weight: bold;
-    padding-left: 15px; /* Increased left padding for navigation items */
+    transition: background-color 0.2s ease, color 0.2s ease;
+    cursor: pointer;
 }
 
+.sidebar-section:hover {
+    background-color: white;
+    color: #ff4500;
+}
+
+/* Selected sidebar section - important for navigation states */
 .sidebar-section.selected {
     background-color: white;
     position: relative;
-    border: none;
-    padding-left: 15px; /* Match the increased padding */
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    border-left: none;
+    border-right: none;
+    padding-left: 14.5px;
+    box-sizing: border-box;
+    z-index: 25;
 }
 
-/* Add a white border to the left and right to cover the sidebar's borders */
-.sidebar-section.selected:before {
-    content: "";
-    position: absolute;
-    left: -1px;
-    top: 0;
-    bottom: 0;
-    width: 1px;
-    background-color: white;
-}
-
+.sidebar-section.selected:before,
 .sidebar-section.selected:after {
-    content: "";
-    position: absolute;
-    right: -1px;
-    top: 0;
-    bottom: 0;
-    width: 1px;
-    background-color: white;
+    display: none;
 }
 
+/* Blue info box in sidebar - adjust margins for layout consistency */
 .sidebar-section.blue-box {
-    background-color: #d5e5fd;
-    border-radius: 0;
-    border: 1px solid #000; /* Black border for blue boxes */
+    background-color: #cee3f8;
+    border-top: 1px solid #999;
+    border-right: 1px solid #999;
+    border-bottom: 1px solid #999;
+    border-left: none;
     padding: 8px;
     margin-bottom: 5px;
     margin-top: 10px;
     font-weight: normal;
     display: block;
-    width: 90%; /* Fixed width for sidebar boxes */
-    margin-left: 0; /* Flush with left edge */
+    width: 90%;
+    margin-left: 0;
     margin-right: auto;
 }
 
 .sidebar-title {
     color: #333;
     text-transform: uppercase;
-    margin-left: 0; /* Remove margin from title since container has padding */
+    margin-left: 0;
+    max-width: 160px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .sidebar-section img {
@@ -311,13 +377,23 @@ header {
     text-transform: none;
 }
 
+.sidebar-section.blue-box div:not(.sidebar-title) {
+    white-space: normal;
+    line-height: 1;
+    font-size: 11px;
+    color: #555;
+    margin: 0;
+    padding: 0;
+}
+
 .sidebar-section a.collapse-button {
     margin-left: auto;
-    color: #ccc;
-    font-size: 14px;
+    margin-right: -5px;
+    color: #666;
+    font-size: 16px;
     text-decoration: none;
     cursor: pointer;
-    font-weight: normal;
+    font-weight: bold;
 }
 
 .sidebar-list {
@@ -335,131 +411,186 @@ header {
     padding: 2px;
 }
 
-/* Updated content to have fixed width and span full height */
+/* Sidebar image container */
+.sidebar-image-container {
+    width: 90%;
+    margin: 10px 0 10px 0;
+    text-align: left;
+}
+
+.sidebar-image-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+.sidebar-image-container div:last-child {
+    color: #999;
+    font-size: 11px;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 5px;
+    margin-left: 35px;
+}
+
+/*   CONTENT AREA   */
 .content {
     flex-grow: 0;
     flex-shrink: 0;
     width: 38%;
     max-width: 565px;
-    border-top: 1px solid #999;
+    border-top: 1px solid #000;
+    border-right: 1px solid #000;
     margin-top: 0;
     position: relative;
     z-index: 5;
     background-color: white;
-    min-height: 100vh; /* Make it at least viewport height */
+    min-height: 100vh;
+    box-shadow: 1px 0px 5px rgba(0, 0, 0, 0.07), 0px 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-.search-controls {
-    display: flex;
-    align-items: center;
-    margin-right: 10px;
-    position: relative;
-    z-index: 15;
-    align-self: center; /* Center vertically in the navbar */
-    margin-bottom: 12px; /* Increased space from bottom */
+.right-sidebar {
+    flex-grow: 1;
+    margin-left: 0;
+    min-width: 300px;
+    min-height: 100vh;
+    background-color: #f0f0f0;
 }
 
-.msg-indicator {
-    display: flex;
-    align-items: center;
-    background-color: white;
-    padding: 1px 5px;
-    border: 1px solid #ccc;
-    border-radius: 0;
-    height: 18px;
-}
-
-.msg-count {
-    margin-left: 2px;
-    font-size: 10px;
-}
-
+/*   POST STYLES   */
 .posts {
     background-color: white;
     border: 1px solid #ccc;
     border-radius: 0;
 }
 
-/* FIXED: Modified post styling for better alignment */
 .post {
     display: flex;
-    padding: 5px;
-    border-bottom: 1px dotted #ccc;
-    align-items: flex-start; /* Align items at the top */
+    padding: 8px 5px;
+    border-bottom: 1px solid #ccc;
+    align-items: flex-start;
+    position: relative;
+    min-height: 60px;
+    clear: both;
+    overflow: hidden;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+}
+
+.post:hover {
+    background-color: #fffaf7;
+}
+
+/* Highlight second post - adjust color to match design theme */
+.post:nth-child(2) {
+    background-color: #FFEFE5;
 }
 
 .post:last-child {
     border-bottom: none;
 }
 
-/* FIXED: Adjusted post-number for consistent width and alignment */
+/* Post numbering and voting components - fixed widths for alignment */
 .post-number {
     width: 20px;
     text-align: right;
     padding-right: 5px;
     color: #c6c6c6;
-    margin-top: 2px; /* Align with top of content */
-    flex-shrink: 0; /* Prevent shrinking */
+    margin-top: 2px;
+    flex-shrink: 0;
 }
 
-/* FIXED: Adjusted post-votes for consistent width and alignment */
 .post-votes {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 40px;
     font-weight: bold;
-    margin-right: 5px; /* Add space between votes and content */
-    flex-shrink: 0; /* Prevent shrinking */
+    margin-right: 5px;
+    flex-shrink: 0;
+    height: 50px;
 }
 
 .vote-up, .vote-down {
     cursor: pointer;
+    font-size: 20px;
+    height: 20px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
     color: #c6c6c6;
-    line-height: 1; /* Reduce line height for better alignment */
 }
 
 .post-score {
     font-size: 14px;
     color: #c6c6c6;
-    padding: 2px 0; /* Add padding for better spacing */
+    padding: 2px 0;
 }
 
-/* FIXED: Improved thumbnail alignment */
 .post-thumbnail {
     width: 70px;
     height: 50px;
-    margin-right: 8px; /* Increased space between thumbnail and content */
+    margin-right: 8px;
     background-color: #f0f0f0;
     border: 1px solid #ccc;
-    flex-shrink: 0; /* Prevent shrinking */
+    flex-shrink: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* FIXED: Improve post content structure */
+.post-thumbnail img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
 .post-content {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+    min-height: 50px;
+    padding-bottom: 5px;
 }
 
 .post-title {
-    margin-bottom: 3px; /* Consistent spacing */
+    margin-bottom: 5px;
+    line-height: 1.2;
 }
 
 .post-title a {
     color: #0000ff;
     font-weight: normal;
+    font-size: 14px;
+    font-family: verdana, arial, helvetica, sans-serif;
 }
 
 .post-meta {
     color: #888;
     font-size: 10px;
-    margin-bottom: 3px; /* Consistent spacing */
+    margin-bottom: 5px;
+    line-height: 1.2;
+    clear: both;
+}
+
+.post-meta a,
+.username {
+    color: #369;
+    text-decoration: none;
+}
+
+.post-meta a:hover {
+    text-decoration: underline;
 }
 
 .post-actions {
     color: #888;
     font-size: 10px;
+    font-weight: bold;
+    margin-top: auto;
+    line-height: 1.2;
 }
 
 .post-actions a {
@@ -471,16 +602,12 @@ header {
     color: #888;
 }
 
-/* Updated right sidebar to fill remaining space and span full height */
-.right-sidebar {
-    flex-grow: 1;
-    margin-left: 0;
-    min-width: 300px;
-    min-height: 100vh; /* Make it at least viewport height */
-    background-color: #f0f0f0;
+.posts > .post + .post {
+    margin-top: 2px;
 }
 
-/* Message box styling for top comment box */
+/*   COMMENT STYLING   */
+/* Comment box with message styling - critical for visual hierarchy */
 .comment-box {
     background-color: white;
     border: 1px solid #ccc;
@@ -490,15 +617,18 @@ header {
     position: relative;
 }
 
-/* Special styling for the first comment box */
 .comment-box.message-box {
-    border: 1px solid #ccc;
+    border: none;
     background-color: #f0f0f0;
     position: relative;
     margin-bottom: 20px;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 8px;
 }
 
-/* Message point styling */
+/* Speech bubble pointer for message box */
 .message-box:after {
     content: "";
     position: absolute;
@@ -515,52 +645,55 @@ header {
 .message-box:before {
     content: "";
     position: absolute;
-    bottom: -21px;
+    bottom: -22px;
     right: 29px;
     border-width: 21px 21px 0;
     border-style: solid;
-    border-color: #ccc transparent;
+    border-color: #000 transparent;
     display: block;
     width: 0;
     z-index: 0;
 }
 
-/* Layout for post info in message box */
 .message-box-top {
-    margin-bottom: 15px;
+    margin-bottom: 6px;
 }
 
 .message-box-title {
-    font-size: 18px;
-    margin-bottom: 5px;
+    font-size: 16px;
+    margin-bottom: 2px;
     color: #551a8b;
     font-weight: bold;
+    font-family: verdana, arial, helvetica, sans-serif;
 }
 
 .message-box-link {
     color: #888;
     font-size: 12px;
-    margin-bottom: 10px;
+    margin-bottom: 0;
 }
 
 .message-box-content {
     display: flex;
     justify-content: space-between;
-    margin: 15px 0;
+    align-items: flex-start;
 }
 
+/* Stats display in message box */
 .message-box-stats {
     display: flex;
     align-items: center;
     background-color: white;
-    padding: 8px;
+    padding: 5px;
     border: 1px solid #ddd;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .points-number {
-    font-size: 24px;
-    color: #333;
-    margin-right: 10px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #888;
+    margin-right: 8px;
 }
 
 .points-text {
@@ -571,7 +704,7 @@ header {
 .message-box-votes {
     display: flex;
     flex-direction: column;
-    margin-left: 15px;
+    margin-left: 10px;
 }
 
 .up-votes {
@@ -580,32 +713,36 @@ header {
 }
 
 .down-votes {
-    color: #9494FF;
+    color: #c6c6c6;
 }
 
 .message-box-meta {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    text-align: right;
+    justify-content: flex-start;
+    text-align: left;
+    align-self: flex-start;
+    margin-top: 20px;
 }
 
 .submitted-date {
     color: #888;
     font-size: 11px;
-    margin-bottom: 5px;
+    margin-bottom: 3px;
+    line-height: 1.2;
 }
 
 .comments-sort {
     color: #888;
     font-size: 11px;
+    line-height: 1.2;
 }
 
 .comments-sort b {
     font-weight: bold;
 }
 
-/* Comment area styling */
+/*   COMMENT AREA STYLING   */
 .comment-area {
     background-color: #f0f0f0;
     padding: 10px 0;
@@ -631,6 +768,7 @@ header {
     background-color: white;
 }
 
+/* Save button positioning - adjust right value if redesigning layout */
 .save-button {
     background-color: #eee;
     border: 1px solid #ccc;
@@ -642,7 +780,7 @@ header {
     font-size: 11px;
     position: absolute;
     bottom: 28px;
-    right: 0; /* Position from right instead of left */
+    right: 0;
 }
 
 .formatting-help {
@@ -653,7 +791,7 @@ header {
     margin-top: 3px;
 }
 
-/* Comment styling */
+/*   COMMENT THREAD STYLING   */
 .comment-thread {
     margin-top: 15px;
 }
@@ -672,6 +810,7 @@ header {
     font-size: 11px;
 }
 
+/* Comment voting arrows */
 .vote-arrows {
     display: flex;
     flex-direction: column;
@@ -691,6 +830,7 @@ header {
     margin-bottom: 3px;
 }
 
+/* Active and hover states for voting elements - consistent colors for UI feedback */
 .upvote.active {
     color: #FF8B60;
 }
@@ -699,10 +839,26 @@ header {
     color: #9494FF;
 }
 
+.upvote:hover, .vote-up:hover {
+    color: #ff8b60;
+    cursor: pointer;
+}
+
+.downvote:hover, .vote-down:hover {
+    color: #9494ff;
+    cursor: pointer;
+}
+
 .comment-username {
     color: #0000ff;
     font-weight: bold;
     margin-right: 5px;
+}
+
+.comment-username, .username {
+    color: #336699;
+    font-weight: bold;
+    font-family: verdana, arial, helvetica, sans-serif;
 }
 
 .comment-points {
@@ -721,35 +877,67 @@ header {
     cursor: pointer;
 }
 
+.comment-collapse:hover {
+    color: #369;
+}
+
 .comment-body {
     margin-left: 20px;
-    line-height: 1.3;
+    line-height: 1.4;
     color: #333;
     margin-bottom: 5px;
+    font-family: verdana, arial, helvetica, sans-serif;
+    font-size: 12px;
+}
+
+.comment-body ul {
+    margin-left: 20px;
+    margin-top: 5px;
+}
+
+.comment-body li {
+    margin-bottom: 3px;
 }
 
 .comment-actions {
     margin-left: 20px;
     font-size: 10px;
     margin-bottom: 5px;
+    font-weight: bold;
 }
 
 .comment-actions a {
     color: #888;
     margin-right: 10px;
     text-decoration: none;
+    font-weight: bold;
 }
 
 .comment-actions a:hover {
     text-decoration: underline;
 }
 
-/* Nested comments */
+/* Comment thread visual hierarchy with left border */
 .comment-replies {
     margin-left: 20px;
+    border-left: 2px solid #c6c6c6;
+    padding-left: 10px;
+    position: relative;
 }
 
-/* Special styling for different user types */
+.comment-replies .comment {
+    margin-top: 10px;
+}
+
+.comment-replies .comment:first-child {
+    margin-top: 5px;
+}
+
+.comment-replies:hover {
+    border-left-color: #5f99cf;
+}
+
+/*   USER ROLE STYLING   */
 .op-user {
     color: #0055df !important;
 }
@@ -758,7 +946,6 @@ header {
     color: #228822 !important;
 }
 
-/* Special icon for certain comments */
 .special-icon {
     display: inline-block;
     font-size: 10px;
@@ -766,11 +953,14 @@ header {
     margin-left: 5px;
 }
 
+/*   PAGINATION   */
 .pagination {
     display: flex;
     justify-content: flex-end;
     margin-top: 10px;
     margin-right: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
 }
 
 .pagination a {
@@ -783,8 +973,16 @@ header {
     display: flex;
     align-items: center;
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    font-size: 12px;
+    font-weight: bold;
 }
 
+.pagination a:hover {
+    background-color: #e9e9e9;
+    text-decoration: none;
+}
+
+/* Pagination arrow indicators */
 .pagination a.newer:before {
     content: "◀ ";
     margin-right: 3px;
@@ -795,6 +993,7 @@ header {
     margin-left: 3px;
 }
 
+/*   MISC STYLES   */
 .points-positive {
     color: #FF8B60;
 }
@@ -808,16 +1007,4 @@ header {
     justify-content: space-between;
     margin-top: 10px;
     margin-bottom: 5px;
-}
-
-/* Added new styles for sidebar image container */
-.sidebar-image-container {
-    width: 90%;
-    margin: 10px 0 10px 0; /* Flush with left edge */
-    text-align: left;
-}
-
-.sidebar-image-container img {
-    max-width: 100%;
-    height: auto;
 }
